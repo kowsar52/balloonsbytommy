@@ -10,7 +10,6 @@
 
 
 <?php $__env->startSection('content'); ?>
-<link id="mainStyles" rel="stylesheet" media="screen" href="<?php echo e(asset('assets/front/css/styles.min.css')); ?>">
 
 
 <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
@@ -18,7 +17,7 @@
       <div class="row">
           <div class="col-lg-12">
               <div class="ltn__breadcrumb-inner text-center">
-                  <h1 class="ltn__page-title">Corporate Events</h1>
+                  <h1 class="ltn__page-title"><?php echo e($item->name); ?></h1>
                   <div class="ltn__breadcrumb-list">
                       <ul>
                         <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('Home')); ?></a>
