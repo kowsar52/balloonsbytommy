@@ -160,4 +160,4 @@
 <?php $__env->stopSection(); ?>
 
 
-<?php echo $__env->make('master.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/decor/core/resources/views/front/catalog/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('master.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/decor/core/resources/views/front/catalog/index.blade.php ENDPATH**/ ?>

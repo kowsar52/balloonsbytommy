@@ -1,4 +1,4 @@
-@extends('master.layout')
+@extends('master.front')
 @section('meta')
 <meta name="keywords" content="{{$category->meta_keywords}}">
 <meta name="description" content="{{$category->meta_descriptions}}">

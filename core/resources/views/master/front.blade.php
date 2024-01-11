@@ -24,6 +24,7 @@
 <link rel="apple-touch-icon" sizes="167x167" href="{{asset('assets/images/'.$setting->favicon)}}">
 
 <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
+<link rel="stylesheet" media="screen" href="{{asset('assets/front/css/plugins.min.css')}}">
 
 @yield('styleplugins')
 
@@ -32,7 +33,6 @@
 <link id="mainStyles" rel="stylesheet" media="screen" href="{{asset('assets/front/css/responsive.css')}}">
 <!-- Color css -->
 <link href="{{ asset('assets/front/css/color.php?primary_color=').str_replace('#','',$setting->primary_color) }}" rel="stylesheet">
-<link rel="stylesheet" media="screen" href="{{asset('assets/front/css/plugins.min.css')}}">
 
 <!-- Modernizr-->
 <script src="{{asset('assets/front/js/modernizr.min.js')}}"></script>
@@ -61,7 +61,6 @@
 @endif
 {{-- Facebook pixel End --}}
 
-
 </head>
 <!-- Body-->
 <body class="
@@ -88,26 +87,20 @@ body_theme2
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="d-flex justify-content-between">
+                    <div class="align-content-center align-items-center d-flex justify-content-between">
                         <!-- Logo-->
                         <div class="site-branding"><a class="site-logo align-self-center" href="{{route('front.index')}}"><img src="{{asset('assets/images/'.$setting->logo)}}" alt="{{$setting->title}}"></a></div>
                         
 						<!-- Search / Categories-->
                         <div class="search-box-wrap d-none d-lg-block d-flex">
                         <div class="search-box-inner align-self-center">
-                            <div class="search-box d-flex">
-                                <select name="category" id="category_select" class="categories">
-									<option value="">{{__('All')}}</option>
-                                    @foreach (DB::table('categories')->whereStatus(1)->get() as $category)
-                                    <option value="{{$category->slug}}">{{$category->name}}</option>
-                                    @endforeach
-									</select>
+                            <div class="search-box ">
                                 <form class="input-group" id="header_search_form" action="{{route('front.catalog')}}" method="get">
                                     <input type="hidden" name="category" value="" id="search__category">
                                     <span class="input-group-btn">
                                     <button type="submit"><i class="icon-search"></i></button>
                                     </span>
-                                    <input class="form-control" type="text" data-target="{{route('front.search.suggest')}}" id="__product__search" name="search" placeholder="{{__('Search by product name')}}">
+                                    <input class="form-control rounded-pill" type="text" data-target="{{route('front.search.suggest')}}" id="__product__search" name="search" placeholder="{{__('Search by product name')}}">
                                     <div class="serch-result d-none">
                                        {{-- search result --}}
                                     </div>
@@ -132,30 +125,14 @@ body_theme2
                             </a>
                         </div>
 
-<!--
-                        <div class="toolbar-item hidden-on-mobile"><a href="{{route('fornt.compare.index')}}">
-                            <div><span class="compare-icon"><i class="icon-repeat"></i><span class="count-label compare_count">{{Session::has('compare') ? count(Session::get('compare')) : '0'}}</span></span><span class="text-label">{{ __('Compare') }}</span></div>
+
+                        <div class="toolbar-item">
+                            <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
+                                <i class="fas fa-comments"></i>
+                                <span style="font-size: 12px">Start a Quote</span>
                             </a>
                         </div>
-                        @if(Auth::check())
-                        <div class="toolbar-item hidden-on-mobile"><a href="{{route('user.wishlist.index')}}">
-                            <div><span class="compare-icon"><i class="icon-heart"></i><span class="count-label wishlist_count">{{Auth::user()->wishlists->count()}}</span></span><span class="text-label">{{__('Wishlist')}}</span></div>
-                            </a>
-                        </div>
-                        @else
-                        <div class="toolbar-item hidden-on-mobile"><a href="{{route('user.wishlist.index')}}">
-                          <div><span class="compare-icon"><i class="icon-heart"></i></span><span class="text-label">{{__('Wishlist')}}</span></div>
-                          </a>
-                      </div>
-                        @endif
-                        <div class="toolbar-item"><a href="{{route('front.cart')}}">
-                            <div><span class="cart-icon"><i class="icon-shopping-cart"></i><span class="count-label cart_count">{{Session::has('cart') ? count(Session::get('cart')) : '0'}} </span></span><span class="text-label">{{ __('Cart') }}</span></div>
-                            </a>
-                            <div class="toolbar-dropdown cart-dropdown widget-cart  cart_view_header" id="header_cart_load" data-target="{{route('front.header.cart')}}">
-                            @include('includes.header_cart')
-                            </div>
-                        </div>
--->
+
                         </div>
 
                         <!-- Mobile Menu-->

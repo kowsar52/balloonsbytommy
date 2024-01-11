@@ -1,4 +1,4 @@
-@extends('master.layout')
+@extends('master.front')
 
 @section('content')
 <center><h1>{{__("Please do not refresh this page...")}}</h1></center>

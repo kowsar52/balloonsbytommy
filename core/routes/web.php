@@ -305,54 +305,54 @@ Route::group(['middleware' => 'maintainance'], function () {
         Route::prefix('user')->group(function () {
 
             //------------ AUTH ------------
-            // Route::get('/login', 'Auth\User\LoginController@showForm')->name('user.login');
-            // Route::post('/login-submit', 'Auth\User\LoginController@login')->name('user.login.submit');
-            // Route::get('/logout', 'Auth\User\LoginController@logout')->name('user.logout');
-            // Route::get('/remove/account', 'User\AccountController@removeAccount')->name('user.account.remove');
+            Route::get('/login', 'Auth\User\LoginController@showForm')->name('user.login');
+            Route::post('/login-submit', 'Auth\User\LoginController@login')->name('user.login.submit');
+            Route::get('/logout', 'Auth\User\LoginController@logout')->name('user.logout');
+            Route::get('/remove/account', 'User\AccountController@removeAccount')->name('user.account.remove');
 
-            // //------------ REGISTER ------------
-            // Route::get('/register', 'Auth\User\RegisterController@showForm')->name('user.register');
-            // Route::post('/register-submit', 'Auth\User\RegisterController@register')->name('user.register.submit');
-            // Route::get('/verify-link/{token}', 'Auth\User\RegisterController@verify')->name('user.account.verify');
+            //------------ REGISTER ------------
+            Route::get('/register', 'Auth\User\RegisterController@showForm')->name('user.register');
+            Route::post('/register-submit', 'Auth\User\RegisterController@register')->name('user.register.submit');
+            Route::get('/verify-link/{token}', 'Auth\User\RegisterController@verify')->name('user.account.verify');
 
-            // //------------ FORGOT ------------
-            // Route::get('/forgot', 'Auth\User\ForgotController@showForm')->name('user.forgot');
-            // Route::post('/forgot-submit', 'Auth\User\ForgotController@forgot')->name('user.forgot.submit');
-            // Route::get('/change-password/{token}', 'Auth\User\ForgotController@showChangePassForm')->name('user.change.token');
-            // Route::post('/change-password-submit', 'Auth\User\ForgotController@changepass')->name('user.change.password');
+            //------------ FORGOT ------------
+            Route::get('/forgot', 'Auth\User\ForgotController@showForm')->name('user.forgot');
+            Route::post('/forgot-submit', 'Auth\User\ForgotController@forgot')->name('user.forgot.submit');
+            Route::get('/change-password/{token}', 'Auth\User\ForgotController@showChangePassForm')->name('user.change.token');
+            Route::post('/change-password-submit', 'Auth\User\ForgotController@changepass')->name('user.change.password');
 
-            // //------------ DASHBOARD ------------
-            // Route::get('/dashboard', 'User\AccountController@index')->name('user.dashboard');
-            // Route::get('/profile', 'User\AccountController@profile')->name('user.profile');
+            //------------ DASHBOARD ------------
+            Route::get('/dashboard', 'User\AccountController@index')->name('user.dashboard');
+            Route::get('/profile', 'User\AccountController@profile')->name('user.profile');
 
-            // // ----------- TICKET ---------------//
-            // Route::get('/ticket', 'User\TicketController@ticket')->name('user.ticket');
-            // Route::get('/ticket/new', 'User\TicketController@ticketNew')->name('user.ticket.create');
-            // Route::post('/ticket/store', 'User\TicketController@ticketStore')->name('user.ticket.store');
-            // Route::get('/ticket/view/{id}', 'User\TicketController@ticketView')->name('user.ticket.view');
-            // Route::post('/ticket/reply/store', 'User\TicketController@ticketReply')->name('user.ticket.reply');
-            // Route::get('/ticket/delete/{id}', 'User\TicketController@ticketDelete')->name('user.ticket.delete');
+            // ----------- TICKET ---------------//
+            Route::get('/ticket', 'User\TicketController@ticket')->name('user.ticket');
+            Route::get('/ticket/new', 'User\TicketController@ticketNew')->name('user.ticket.create');
+            Route::post('/ticket/store', 'User\TicketController@ticketStore')->name('user.ticket.store');
+            Route::get('/ticket/view/{id}', 'User\TicketController@ticketView')->name('user.ticket.view');
+            Route::post('/ticket/reply/store', 'User\TicketController@ticketReply')->name('user.ticket.reply');
+            Route::get('/ticket/delete/{id}', 'User\TicketController@ticketDelete')->name('user.ticket.delete');
 
-            // //------------ SETTING ------------
-            // Route::post('/profile/update', 'User\AccountController@profileUpdate')->name('user.profile.update');
-            // Route::get('/addresses', 'User\AccountController@addresses')->name('user.address');
-            // Route::post('/billing/addresses', 'User\AccountController@billingSubmit')->name('user.billing.submit');
-            // Route::post('/shipping/addresses', 'User\AccountController@shippingSubmit')->name('user.shipping.submit');
+            //------------ SETTING ------------
+            Route::post('/profile/update', 'User\AccountController@profileUpdate')->name('user.profile.update');
+            Route::get('/addresses', 'User\AccountController@addresses')->name('user.address');
+            Route::post('/billing/addresses', 'User\AccountController@billingSubmit')->name('user.billing.submit');
+            Route::post('/shipping/addresses', 'User\AccountController@shippingSubmit')->name('user.shipping.submit');
 
-            // //------------ ORDER ------------
-            // Route::get('/orders', 'User\OrderController@index')->name('user.order.index');
-            // Route::get('/order/print/{id}', 'User\OrderController@printOrder')->name('user.order.print');
-            // Route::get('/order/invoice/{id}', 'User\OrderController@details')->name('user.order.invoice');
-            // //------------ WISHLIST ------------
-            // Route::get('/wishlists', 'User\WishlistController@index')->name('user.wishlist.index');
-            // Route::get('/wishlist/store/{id}', 'User\WishlistController@store')->name('user.wishlist.store');
-            // Route::get('/wishlist/delete/{id}', 'User\WishlistController@delete')->name('user.wishlist.delete');
-            // Route::get('/wishlista/delete/all', 'User\WishlistController@alldelete')->name('user.wishlist.delete.all');
+            //------------ ORDER ------------
+            Route::get('/orders', 'User\OrderController@index')->name('user.order.index');
+            Route::get('/order/print/{id}', 'User\OrderController@printOrder')->name('user.order.print');
+            Route::get('/order/invoice/{id}', 'User\OrderController@details')->name('user.order.invoice');
+            //------------ WISHLIST ------------
+            Route::get('/wishlists', 'User\WishlistController@index')->name('user.wishlist.index');
+            Route::get('/wishlist/store/{id}', 'User\WishlistController@store')->name('user.wishlist.store');
+            Route::get('/wishlist/delete/{id}', 'User\WishlistController@delete')->name('user.wishlist.delete');
+            Route::get('/wishlista/delete/all', 'User\WishlistController@alldelete')->name('user.wishlist.delete.all');
         });
 
 
-        // Route::get('auth/{provider}', 'User\SocialLoginController@redirectToProvider')->name('social.provider');
-        // Route::get('auth/{provider}/callback', 'User\SocialLoginController@handleProviderCallback');
+        Route::get('auth/{provider}', 'User\SocialLoginController@redirectToProvider')->name('social.provider');
+        Route::get('auth/{provider}/callback', 'User\SocialLoginController@handleProviderCallback');
 
         // ************************************ USER PANEL ENDS**********************************************
 
@@ -363,10 +363,9 @@ Route::group(['middleware' => 'maintainance'], function () {
         // ************************************ FRONTEND **********************************************
 
         //------------ FRONT ------------
-        Route::get('/', 'Front\FrontendController@index')->name('front.index');
+        Route::get('/', 'Front\CatalogController@index')->name('front.index');
         Route::get('/extra-index', 'Front\FrontendController@extraIndex')->name('front.extraindex');
         Route::get('/product/{slug}', 'Front\FrontendController@product')->name('front.product');
-        Route::get('/product/{slug}/send-quote', 'Front\FrontendController@sendQuote')->name('front.sendQuote');
         Route::get('/campaign/products', 'Front\FrontendController@compaignProduct')->name('front.campaign');
         Route::get('/blog', 'Front\FrontendController@blog')->name('front.blog');
         Route::get('/brands', 'Front\FrontendController@brands')->name('front.brand');
@@ -394,18 +393,18 @@ Route::group(['middleware' => 'maintainance'], function () {
         Route::get('compare/products/', 'Front\CompareController@compare_product')->name('fornt.compare.index');
 
         //------------ CART ------------
-        // Route::get('/cart', 'Front\CartController@index')->name('front.cart');
-        // Route::get('/front/cart/clear', 'Front\CartController@cartClear')->name('front.cart.clear');
-        // Route::get('/header/cart/load', 'Front\CartController@headerCartLoad')->name('front.header.cart');
-        // Route::get('/main/cart/load', 'Front\CartController@CartLoad')->name('cart.get.load');
-        // Route::post('/cart/submit', 'Front\CartController@store')->name('front.cart.submit');
-        // Route::get('product/add/cart', 'Front\CartController@addToCart')->name('product.addcart');
-        // Route::get('/product/cart/update/{id}', 'Front\CartController@update')->name('product.update.single');
+        Route::get('/cart', 'Front\CartController@index')->name('front.cart');
+        Route::get('/front/cart/clear', 'Front\CartController@cartClear')->name('front.cart.clear');
+        Route::get('/header/cart/load', 'Front\CartController@headerCartLoad')->name('front.header.cart');
+        Route::get('/main/cart/load', 'Front\CartController@CartLoad')->name('cart.get.load');
+        Route::post('/cart/submit', 'Front\CartController@store')->name('front.cart.submit');
+        Route::get('product/add/cart', 'Front\CartController@addToCart')->name('product.addcart');
+        Route::get('/product/cart/update/{id}', 'Front\CartController@update')->name('product.update.single');
 
-        // Route::post('/promo/submit', 'Front\CartController@promoStore')->name('front.promo.submit');
-        // Route::get('/cart/destroy/{id}', 'Front\CartController@destroy')->name('front.cart.destroy');
-        // Route::post('/shipping/submit', 'Front\CartController@shippingStore')->name('front.shipping.submit');
-        // Route::post('/shipping/charge/get', 'Front\CartController@shippingCharge')->name('front.shipping.charge');
+        Route::post('/promo/submit', 'Front\CartController@promoStore')->name('front.promo.submit');
+        Route::get('/cart/destroy/{id}', 'Front\CartController@destroy')->name('front.cart.destroy');
+        Route::post('/shipping/submit', 'Front\CartController@shippingStore')->name('front.shipping.submit');
+        Route::post('/shipping/charge/get', 'Front\CartController@shippingCharge')->name('front.shipping.charge');
 
         //------------ CATALOG ------------
         Route::get('/catalog', 'Front\CatalogController@index')->name('front.catalog');
@@ -414,32 +413,32 @@ Route::group(['middleware' => 'maintainance'], function () {
 
 
         //------------ CHECKOUT ------------
-        // Route::get('/checkout/billing/address', 'Front\CheckoutController@ship_address')->name('front.checkout.billing');
-        // Route::post('/checkout/billing/store', 'Front\CheckoutController@billingStore')->name('front.checkout.store');
-        // Route::get('/checkout/shpping/address', 'Front\CheckoutController@shipping')->name('front.checkout.shipping');
-        // Route::post('/checkout/shpping/store', 'Front\CheckoutController@shippingStore')->name('front.checkout.shipping.store');
-        // Route::get('/checkout/review/payment', 'Front\CheckoutController@payment')->name('front.checkout.payment');
-        // Route::get('/checkout/state/setup/{state_id}', 'Front\CheckoutController@stateSetUp')->name('front.state.setup');
-        // Route::post('/checkout-submit', 'Front\CheckoutController@checkout')->name('front.checkout.submit');
-        // Route::get('/checkout/success', 'Front\CheckoutController@paymentSuccess')->name('front.checkout.success');
-        // Route::get('/checkout/cancle', 'Front\CheckoutController@paymentCancle')->name('front.checkout.cancle');
-        // Route::get('/paypal/checkout/redirect', 'Front\CheckoutController@paymentRedirect')->name('front.checkout.redirect');
-        // Route::get('/checkout/mollie/notify', 'Front\CheckoutController@mollieRedirect')->name('front.checkout.mollie.redirect');
-        // Route::post('/paytm/notify', 'Payment\PaytmController@notify')->name('front.paytm.notify');
-        // Route::post('/paytm/submit', 'Payment\PaytmController@store')->name('front.paytm.submit');
-        // Route::post('/razorpay/notify', 'Payment\RazorpayController@notify')->name('front.razorpay.notify');
-        // Route::post('/razorpay/submit', 'Payment\RazorpayController@store')->name('front.razorpay.submit');
-        // Route::post('/flutterwave/notify', 'Payment\FlutterwaveController@notify')->name('front.flutterwave.notify');
-        // Route::post('/flutterwave/submit', 'Payment\FlutterwaveController@store')->name('front.flutterwave.submit');
-        // Route::post('/mercadopago/submit', 'Payment\MercadopagoController@store')->name('front.mercadopago.submit');
-        // Route::post('/authorize/submit', 'Payment\AuthorizeController@store')->name('front.authorize.submit');
+        Route::get('/checkout/billing/address', 'Front\CheckoutController@ship_address')->name('front.checkout.billing');
+        Route::post('/checkout/billing/store', 'Front\CheckoutController@billingStore')->name('front.checkout.store');
+        Route::get('/checkout/shpping/address', 'Front\CheckoutController@shipping')->name('front.checkout.shipping');
+        Route::post('/checkout/shpping/store', 'Front\CheckoutController@shippingStore')->name('front.checkout.shipping.store');
+        Route::get('/checkout/review/payment', 'Front\CheckoutController@payment')->name('front.checkout.payment');
+        Route::get('/checkout/state/setup/{state_id}', 'Front\CheckoutController@stateSetUp')->name('front.state.setup');
+        Route::post('/checkout-submit', 'Front\CheckoutController@checkout')->name('front.checkout.submit');
+        Route::get('/checkout/success', 'Front\CheckoutController@paymentSuccess')->name('front.checkout.success');
+        Route::get('/checkout/cancle', 'Front\CheckoutController@paymentCancle')->name('front.checkout.cancle');
+        Route::get('/paypal/checkout/redirect', 'Front\CheckoutController@paymentRedirect')->name('front.checkout.redirect');
+        Route::get('/checkout/mollie/notify', 'Front\CheckoutController@mollieRedirect')->name('front.checkout.mollie.redirect');
+        Route::post('/paytm/notify', 'Payment\PaytmController@notify')->name('front.paytm.notify');
+        Route::post('/paytm/submit', 'Payment\PaytmController@store')->name('front.paytm.submit');
+        Route::post('/razorpay/notify', 'Payment\RazorpayController@notify')->name('front.razorpay.notify');
+        Route::post('/razorpay/submit', 'Payment\RazorpayController@store')->name('front.razorpay.submit');
+        Route::post('/flutterwave/notify', 'Payment\FlutterwaveController@notify')->name('front.flutterwave.notify');
+        Route::post('/flutterwave/submit', 'Payment\FlutterwaveController@store')->name('front.flutterwave.submit');
+        Route::post('/mercadopago/submit', 'Payment\MercadopagoController@store')->name('front.mercadopago.submit');
+        Route::post('/authorize/submit', 'Payment\AuthorizeController@store')->name('front.authorize.submit');
 
-        // Route::post('/sslcommerz/notify', 'Payment\SslCommerzController@notify')->name('front.sslcommerz.notify');
-        // Route::post('/sslcommerz/submit', 'Payment\SslCommerzController@store')->name('front.sslcommerz.submit');
+        Route::post('/sslcommerz/notify', 'Payment\SslCommerzController@notify')->name('front.sslcommerz.notify');
+        Route::post('/sslcommerz/submit', 'Payment\SslCommerzController@store')->name('front.sslcommerz.submit');
 
         // ----------- TRACK ORDER ----------//
-        // Route::get('/track/order', 'Front\FrontendController@trackOrder')->name('front.order.track');
-        // Route::get('/order/track/submit', 'Front\FrontendController@track')->name('front.order.track.submit');
+        Route::get('/track/order', 'Front\FrontendController@trackOrder')->name('front.order.track');
+        Route::get('/order/track/submit', 'Front\FrontendController@track')->name('front.order.track.submit');
 
         Route::get('/cache/clear', function () {
             Artisan::call('cache:clear');

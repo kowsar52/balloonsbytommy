@@ -10,26 +10,22 @@
 
 
 <?php $__env->startSection('content'); ?>
-
-
-<div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
-  <div class="container">
+<div class="page-title">
+    <div class="container">
       <div class="row">
           <div class="col-lg-12">
-              <div class="ltn__breadcrumb-inner text-center">
-                  <h1 class="ltn__page-title"><?php echo e($item->name); ?></h1>
-                  <div class="ltn__breadcrumb-list">
-                      <ul>
-                        <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('Home')); ?></a>
-                          <li><a href="<?php echo e(route('front.catalog')); ?>"><?php echo e(__('Shop')); ?></a>
-                          </li>
-                          <li><?php echo e($item->name); ?></li>
-                      </ul>
-                  </div>
-              </div>
+            <ul class="breadcrumbs">
+                <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('Home')); ?></a>
+                </li>
+                <li class="separator"></li>
+                <li><a href="<?php echo e(route('front.catalog')); ?>"><?php echo e(__('Shop')); ?></a>
+                </li>
+                <li class="separator"></li>
+                <li><?php echo e($item->name); ?></li>
+              </ul>
           </div>
       </div>
-  </div>
+    </div>
 </div>
   <!-- Page Content-->
 <div class="container padding-bottom-1x mb-1">
@@ -69,7 +65,7 @@
           <?php endif; ?>
 
           <div class="product-thumbnails insize">
-            <div class="product-details-slider" >
+            <div class="product-details-slider owl-carousel" >
             <div class="item"><img src="<?php echo e(asset('assets/images/'.$item->photo)); ?>" alt="zoom"  /></div>
             <?php $__currentLoopData = $galleries; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $gallery): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="item"><img src="<?php echo e(asset('assets/images/'.$gallery->photo)); ?>" alt="zoom"  /></div>
@@ -113,7 +109,11 @@
                         <?php echo renderStarRating($item->reviews->avg('rating')); ?>
 
                         </div>
-                        
+                        <?php if($item->is_stock()): ?>
+                            <span class="text-success  d-inline-block"><?php echo e(__('In Stock')); ?></span>
+                        <?php else: ?>
+                            <span class="text-danger  d-inline-block"><?php echo e(__('Out of stock')); ?></span>
+                        <?php endif; ?>
                     </div>
 
 
@@ -149,14 +149,32 @@
                             <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </div>
-                    
-                    <div class="btn-wrapper">
-                      <ul style="list-style-type: none; padding-left: 0;">
-                 <li>
-             <a href="<?php echo e(url('product/'.$item->slug.'/send-quote')); ?>" class="theme-btn-1 btn btn-effect-1 m-0">Start a quote!</a></li>
-                       
-                       </ul>
-                           </div>
+                    <div class="row align-items-end pb-4">
+                        <div class="col-sm-12">
+                            <?php if($item->item_type == 'normal'): ?>
+                            <div class="qtySelector product-quantity">
+                              <span class="decreaseQty subclick"><i class="fas fa-minus "></i></span>
+                              <input type="text" class="qtyValue cart-amount" value="1">
+                              <span class="increaseQty addclick"><i class="fas fa-plus"></i></span>
+                                <input type="hidden" value="3333" id="current_stock">
+                            </div>
+                            <?php endif; ?>
+                            <div class="p-action-button">
+                              <?php if($item->item_type != 'affiliate'): ?>
+                                <?php if($item->is_stock()): ?>
+                                <button class="btn btn-primary m-0 a-t-c-mr" id="add_to_cart"><i class="icon-bag"></i><span><?php echo e(__('Add to Cart')); ?></span></button>
+                                <button class="btn btn-primary m-0" id="but_to_cart"><i class="icon-bag"></i><span><?php echo e(__('Buy Now')); ?></span></button>
+                                <?php else: ?>
+                                    <button class="btn btn-primary m-0"><i class="icon-bag"></i><span><?php echo e(__('Out of stock')); ?></span></button>
+                                <?php endif; ?>
+                              <?php else: ?>
+                              <a href="<?php echo e($item->affiliate_link); ?>" target="_blank" class="btn btn-primary m-0"><span><i class="icon-bag"></i><?php echo e(__('Buy Now')); ?></span></a>
+                              <?php endif; ?>
+
+                            </div>
+
+                        </div>
+                    </div>
 
                     <div class="div">
                         <div class="t-c-b-area">
@@ -194,7 +212,17 @@
                         </div>
 
                         <div class="mt-4 p-d-f-area">
-                            
+                            <div class="left">
+                                <a class="btn btn-primary btn-sm wishlist_store wishlist_text" href="<?php echo e(route('user.wishlist.store',$item->id)); ?>"><span><i class="icon-heart"></i></span>
+                                <?php if(Auth::check() && App\Models\Wishlist::where('user_id',Auth::user()->id)->where('item_id',$item->id)->exists()): ?>
+                                <span><?php echo e(__('Added To Wishlist')); ?></span>
+                                <?php else: ?>
+                                <span class="wishlist1"><?php echo e(__('Wishlist')); ?></span>
+                                <span class="wishlist2 d-none"><?php echo e(__('Added To Wishlist')); ?></span>
+                                <?php endif; ?>
+                                </a>
+                                <button class="btn btn-primary btn-sm  product_compare" data-target="<?php echo e(route('fornt.compare.product',$item->id)); ?>" ><span><i class="icon-repeat"></i><?php echo e(__('Compare')); ?></span></button>
+                            </div>
 
                             <div class="d-flex align-items-center">
                                 <span class="text-muted mr-1"><?php echo e(__('Share')); ?>: </span>
@@ -504,4 +532,4 @@
 
 <?php $__env->stopSection(); ?>
 
-<?php echo $__env->make('master.layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/decor/core/resources/views/front/catalog/product.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('master.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/decor/core/resources/views/front/catalog/product.blade.php ENDPATH**/ ?>

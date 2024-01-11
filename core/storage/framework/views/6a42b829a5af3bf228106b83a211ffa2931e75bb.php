@@ -1,8 +1,8 @@
-@extends('master.front')
-@section('title')
-    {{__('Dashboard')}}
-@endsection
-@section('content')
+<?php $__env->startSection('title'); ?>
+    <?php echo e(__('Dashboard')); ?>
+
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
 
 <!-- Page Title-->
 <div class="page-title">
@@ -10,9 +10,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="breadcrumbs">
-                    <li><a href="{{__('front.index')}}">{{__('Home')}}</a> </li>
+                    <li><a href="<?php echo e(__('front.index')); ?>"><?php echo e(__('Home')); ?></a> </li>
                     <li class="separator"></li>
-                    <li>{{__('Welcome Back')}} </li>
+                    <li><?php echo e(__('Welcome Back')); ?> </li>
                   </ul>
             </div>
         </div>
@@ -22,7 +22,7 @@
   <!-- Page Content-->
   <div class="container padding-bottom-3x mb-1">
   <div class="row">
-         @include('includes.user_sitebar')
+         <?php echo $__env->make('includes.user_sitebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
           <div class="col-lg-8">
             <div class="padding-top-2x mt-2 hidden-lg-up"></div>
                 <div class="row u-d-d">
@@ -30,8 +30,8 @@
                         <div class="card round">
                             <div class="card-body text-center">
                                 <i class="icon-shopping-bag"></i>
-                                <p class="mt-3">{{__('All Order')}}</p>
-                                <h4><b>{{$allorders}}</b></h4>
+                                <p class="mt-3"><?php echo e(__('All Order')); ?></p>
+                                <h4><b><?php echo e($allorders); ?></b></h4>
                             </div>
                         </div>
                     </div>
@@ -39,8 +39,8 @@
                         <div class="card round">
                             <div class="card-body text-center">
                                 <i class="icon-shopping-bag"></i>
-                                <p class="mt-3">{{__('Completed Order')}}</p>
-                                <h4><b>{{$delivered}}</b></h4>
+                                <p class="mt-3"><?php echo e(__('Completed Order')); ?></p>
+                                <h4><b><?php echo e($delivered); ?></b></h4>
                             </div>
                         </div>
                     </div>
@@ -48,8 +48,8 @@
                         <div class="card round">
                             <div class="card-body text-center">
                                 <i class="icon-shopping-bag"></i>
-                                <p class="mt-3">{{__('Processing Order')}}</p>
-                                <h4><b>{{$progress}}</b></h4>
+                                <p class="mt-3"><?php echo e(__('Processing Order')); ?></p>
+                                <h4><b><?php echo e($progress); ?></b></h4>
                             </div>
                         </div>
                     </div>
@@ -59,8 +59,8 @@
                         <div class="card round">
                             <div class="card-body text-center">
                                 <i class="icon-shopping-bag"></i>
-                                <p class="mt-3">{{__('Canceled Order')}}</p>
-                                <h4><b>{{$canceled}}</b></h4>
+                                <p class="mt-3"><?php echo e(__('Canceled Order')); ?></p>
+                                <h4><b><?php echo e($canceled); ?></b></h4>
                             </div>
                         </div>
                     </div>
@@ -68,8 +68,8 @@
                         <div class="card round">
                             <div class="card-body text-center">
                                 <i class="icon-shopping-bag"></i>
-                                <p class="mt-3">{{__('Pending Order')}}</p>
-                                <h4><b>{{$pending}}</b></h4>
+                                <p class="mt-3"><?php echo e(__('Pending Order')); ?></p>
+                                <h4><b><?php echo e($pending); ?></b></h4>
                             </div>
                         </div>
                     </div>
@@ -77,4 +77,6 @@
           </div>
         </div>
   </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('master.front', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Applications/MAMP/htdocs/decor/core/resources/views/user/dashboard/dashboard.blade.php ENDPATH**/ ?>

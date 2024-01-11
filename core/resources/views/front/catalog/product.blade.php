@@ -1,4 +1,4 @@
-@extends('master.layout')
+@extends('master.front')
 
 @section('title')
  {{ $item->name}}
@@ -11,8 +11,7 @@
 
 
 @section('content')
-
-{{-- <div class="page-title">
+<div class="page-title">
     <div class="container">
       <div class="row">
           <div class="col-lg-12">
@@ -28,25 +27,6 @@
           </div>
       </div>
     </div>
-</div> --}}
-<div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
-              <div class="ltn__breadcrumb-inner text-center">
-                  <h1 class="ltn__page-title">{{$item->name}}</h1>
-                  <div class="ltn__breadcrumb-list">
-                      <ul>
-                        <li><a href="{{route('front.index')}}">{{__('Home')}}</a>
-                          <li><a href="{{route('front.catalog')}}">{{__('Shop')}}</a>
-                          </li>
-                          <li>{{$item->name}}</li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
 </div>
   <!-- Page Content-->
 <div class="container padding-bottom-1x mb-1">
@@ -86,7 +66,7 @@
           @endif
 
           <div class="product-thumbnails insize">
-            <div class="product-details-slider" >
+            <div class="product-details-slider owl-carousel" >
             <div class="item"><img src="{{asset('assets/images/'.$item->photo)}}" alt="zoom"  /></div>
             @foreach ($galleries as $key => $gallery)
             <div class="item"><img src="{{asset('assets/images/'.$gallery->photo)}}" alt="zoom"  /></div>
@@ -129,11 +109,11 @@
                         <div class="rating-stars d-inline-block gmr-3">
                         {!!renderStarRating($item->reviews->avg('rating'))!!}
                         </div>
-                        {{-- @if ($item->is_stock())
+                        @if ($item->is_stock())
                             <span class="text-success  d-inline-block">{{__('In Stock')}}</span>
                         @else
                             <span class="text-danger  d-inline-block">{{__('Out of stock')}}</span>
-                        @endif --}}
+                        @endif
                     </div>
 
 
@@ -169,7 +149,7 @@
                             @endif
                         @endforeach
                     </div>
-                    {{-- <div class="row align-items-end pb-4">
+                    <div class="row align-items-end pb-4">
                         <div class="col-sm-12">
                             @if ($item->item_type == 'normal')
                             <div class="qtySelector product-quantity">
@@ -194,14 +174,7 @@
                             </div>
 
                         </div>
-                    </div> --}}
-                    <div class="btn-wrapper">
-                      <ul style="list-style-type: none; padding-left: 0;">
-                 <li>
-             <a href="{{url('product/'.$item->slug.'/send-quote')}}" class="theme-btn-1 btn btn-effect-1 m-0">Start a quote!</a></li>
-                       
-                       </ul>
-                           </div>
+                    </div>
 
                     <div class="div">
                         <div class="t-c-b-area">
@@ -239,7 +212,7 @@
                         </div>
 
                         <div class="mt-4 p-d-f-area">
-                            {{-- <div class="left">
+                            <div class="left">
                                 <a class="btn btn-primary btn-sm wishlist_store wishlist_text" href="{{route('user.wishlist.store',$item->id)}}"><span><i class="icon-heart"></i></span>
                                 @if (Auth::check() && App\Models\Wishlist::where('user_id',Auth::user()->id)->where('item_id',$item->id)->exists())
                                 <span>{{__('Added To Wishlist')}}</span>
@@ -249,7 +222,7 @@
                                 @endif
                                 </a>
                                 <button class="btn btn-primary btn-sm  product_compare" data-target="{{route('fornt.compare.product',$item->id)}}" ><span><i class="icon-repeat"></i>{{__('Compare')}}</span></button>
-                            </div> --}}
+                            </div>
 
                             <div class="d-flex align-items-center">
                                 <span class="text-muted mr-1">{{__('Share')}}: </span>

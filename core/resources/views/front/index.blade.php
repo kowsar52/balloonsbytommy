@@ -13,7 +13,4 @@
 @elseif($setting->theme == 'theme4')
     @includeIf('front.themes.theme4')
 
-@elseif($setting->theme == 'theme5')
-    @includeIf('front.themes.theme5')
-
 @endif

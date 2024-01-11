@@ -1,7 +1,6 @@
 @import url(paymentfont.min.css);
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 
 .site-header .site-menu>ul>li .sub-menu,
@@ -692,7 +691,7 @@ body {
 
     color: #505050;
 
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Montserrat", sans-serif;
 
     font-size: 15px;
 
@@ -708,23 +707,26 @@ body {
 
 
 
-/* a {
+a {
 
     color: #377dff;
 
     text-decoration: underline
 
-} */
+}
+a.ltn__utilize-toggle {
+    font-size: 17px;
+    text-transform: uppercase;
+}
 
 
-
-/* a:hover {
+a:hover {
 
     color: #377dff;
 
     text-decoration: none
 
-} */
+}
 
 
 
@@ -942,7 +944,7 @@ figure figcaption {
 
     max-width: 100% !important;
 
-    border-radius: 0px !important;
+    border-radius: 0px;
 
 }
 
@@ -5000,13 +5002,13 @@ button:focus {
 
 
 
-/* .btn-primary {
+.btn-primary {
 
     background-color: #377dff;
 
     
 
-} */
+}
 
 
 
@@ -13580,7 +13582,8 @@ video {
 
     display: block;
 
-    width: 100%
+    width: 100%;
+    max-width: 125px;
 
 }
 
@@ -13590,7 +13593,8 @@ video {
 
     width: 100%;
 
-    padding: 18px 30px
+    padding: 18px 30px;
+    max-width: 600px;
 
 }
 
@@ -13818,11 +13822,10 @@ video {
 
     position: relative;
 
-    width: 90px;
+    width: 150px;
 
     transition: background-color .3s;
 
-    margin-left: 10px
 
 }
 
@@ -13840,7 +13843,7 @@ video {
 
     display: block;
 
-    position: absolute;
+    /* position: absolute; */
 
     top: 0;
 
@@ -21197,7 +21200,4 @@ screen and (-ms-high-contrast:none) {
 
     font-size: 13px;
 
-}
-.site-header .toolbar .toolbar-item > a > div > .compare-icon > .count-label, .site-header .toolbar .toolbar-item > a > div > .cart-icon > .count-label, .btn-primary, .hero-slider > .owl-carousel.dots-inside .owl-dots .owl-dot, .widget-title::after, .scroll-to-top-btn:hover, a.list-group-item::before, .list-group-item-action::before {
-    background-color: #2EA349 !important;
 }

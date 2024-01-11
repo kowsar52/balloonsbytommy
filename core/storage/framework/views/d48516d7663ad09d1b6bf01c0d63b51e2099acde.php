@@ -14,7 +14,4 @@
 <?php elseif($setting->theme == 'theme4'): ?>
     <?php if ($__env->exists('front.themes.theme4')) echo $__env->make('front.themes.theme4', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
-<?php elseif($setting->theme == 'theme5'): ?>
-    <?php if ($__env->exists('front.themes.theme5')) echo $__env->make('front.themes.theme5', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
 <?php endif; ?><?php /**PATH /Applications/MAMP/htdocs/decor/core/resources/views/front/index.blade.php ENDPATH**/ ?>

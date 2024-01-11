@@ -1,4 +1,4 @@
-@extends('master.layout')
+@extends('master.front')
 
 @section('title')
     {{__('Blog')}}
