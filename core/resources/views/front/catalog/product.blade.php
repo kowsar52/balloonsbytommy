@@ -11,7 +11,7 @@
 
 
 @section('content')
-<div class="page-title">
+{{-- <div class="page-title">
     <div class="container">
       <div class="row">
           <div class="col-lg-12">
@@ -27,6 +27,24 @@
           </div>
       </div>
     </div>
+</div> --}}
+<div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="ltn__breadcrumb-inner text-center">
+                  <h1 class="ltn__page-title">{{$item->name}}</h1>
+                  <div class="ltn__breadcrumb-list">
+                      <ul>
+                          <li><a href="{{route('front.index')}}">{{__('Home')}}</a></li>
+                          <li>{{__('Product')}}</li>
+                          <li>{{$item->name}}</li>
+                      </ul>                        
+      </div>
+              </div>
+          </div>
+      </div>
+  </div>
 </div>
   <!-- Page Content-->
 <div class="container padding-bottom-1x mb-1">
@@ -105,7 +123,7 @@
                     <input type="hidden" value="{{PriceHelper::setCurrencyValue()}}" id="set_currency_val">
                     <input type="hidden" value="{{$setting->currency_direction}}" id="currency_direction">
                     <h4 class="mb-2 p-title-main">{{$item->name}}</h4>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <div class="rating-stars d-inline-block gmr-3">
                         {!!renderStarRating($item->reviews->avg('rating'))!!}
                         </div>
@@ -114,7 +132,7 @@
                         @else
                             <span class="text-danger  d-inline-block">{{__('Out of stock')}}</span>
                         @endif
-                    </div>
+                    </div> --}}
 
 
                     @if($item->is_type == 'flash_deal')
@@ -151,15 +169,17 @@
                     </div>
                     <div class="row align-items-end pb-4">
                         <div class="col-sm-12">
-                            @if ($item->item_type == 'normal')
+                          <a href="{{ route('front.quote.request') }}" target="_blank" class="btn btn-primary m-0"><span><i class="icon-bag"></i>{{ __('Start a quote!') }}</span></a>
+
+                            {{-- @if ($item->item_type == 'normal')
                             <div class="qtySelector product-quantity">
                               <span class="decreaseQty subclick"><i class="fas fa-minus "></i></span>
                               <input type="text" class="qtyValue cart-amount" value="1">
                               <span class="increaseQty addclick"><i class="fas fa-plus"></i></span>
                                 <input type="hidden" value="3333" id="current_stock">
                             </div>
-                            @endif
-                            <div class="p-action-button">
+                            @endif --}}
+                            {{-- <div class="p-action-button">
                               @if ($item->item_type != 'affiliate')
                                 @if ($item->is_stock())
                                 <button class="btn btn-primary m-0 a-t-c-mr" id="add_to_cart"><i class="icon-bag"></i><span>{{ __('Add to Cart') }}</span></button>
@@ -171,12 +191,12 @@
                               <a href="{{$item->affiliate_link}}" target="_blank" class="btn btn-primary m-0"><span><i class="icon-bag"></i>{{ __('Buy Now') }}</span></a>
                               @endif
 
-                            </div>
+                            </div> --}}
 
                         </div>
                     </div>
 
-                    <div class="div">
+                    {{-- <div class="div">
                         <div class="t-c-b-area">
                             @if ($item->brand_id)
                             <div class="pt-1 mb-1"><span class="text-medium">{{__('Brand')}}:</span>
@@ -244,7 +264,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -296,7 +316,7 @@
 
 
   <!-- Reviews-->
-  <div class="container  review-area">
+  {{-- <div class="container  review-area">
     <div class="row">
         <div class="col-lg-12">
             <div class="section-title">
@@ -386,7 +406,7 @@
 
 
     </div>
-  </div>
+  </div> --}}
 
   @if(count($related_items)>0)
   <div class="relatedproduct-section container padding-bottom-3x mb-1 s-pt-30">

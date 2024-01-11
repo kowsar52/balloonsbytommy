@@ -20,7 +20,7 @@
                     <div class="ltn__breadcrumb-list">
                         <ul>
                             <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('Home')); ?></a></li>
-                            <li><?php echo e(__('Shop')); ?></li>
+                            <li><?php echo e(__('Products')); ?></li>
                         </ul>                        
         </div>
                 </div>
