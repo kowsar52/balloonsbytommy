@@ -4,6 +4,8 @@
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
+Route::get('/embeded-search-bar', 'Front\FrontendController@embededSearchBar')->name('front.embededSearchBar');
+
 
 Route::group(['middleware' => 'adminlocalize'], function () {
 
@@ -457,4 +459,5 @@ Route::group(['middleware' => 'maintainance'], function () {
 
     });
 });
+
 Route::get('/website/maintainance', 'Front\FrontendController@maintainance')->name('front.maintainance');

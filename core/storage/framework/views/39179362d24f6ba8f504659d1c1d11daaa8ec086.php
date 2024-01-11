@@ -9,19 +9,24 @@
 
 <?php $__env->startSection('content'); ?>
     <!-- Page Title-->
-<div class="page-title">
+
+  <div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
     <div class="container">
-      <div class="row">
-          <div class="col-lg-12">
-            <ul class="breadcrumbs">
-                <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('Home')); ?></a> </li>
-                <li class="separator"></li>
-                <li><?php echo e(__('Shop')); ?></li>
-              </ul>
-          </div>
-      </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ltn__breadcrumb-inner text-center">
+                    <h1 class="ltn__page-title">Products</h1>
+                    <div class="ltn__breadcrumb-list">
+                        <ul>
+                            <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('Home')); ?></a></li>
+                            <li><?php echo e(__('Shop')); ?></li>
+                        </ul>                        
+        </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
   <!-- Page Content-->
   <div class="container padding-bottom-3x mb-1">
         <div class="row">

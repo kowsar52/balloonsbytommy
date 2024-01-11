@@ -530,5 +530,10 @@ public function page($slug)
         return redirect(route('front.index'));
     }
 
+    public function embededSearchBar()
+    {
+       return view('front.embeded_search_bar');
+    }
+
 
 }
