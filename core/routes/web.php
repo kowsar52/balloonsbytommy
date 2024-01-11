@@ -6,6 +6,9 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 Route::get('/embeded-search-bar', 'Front\FrontendController@embededSearchBar')->name('front.embededSearchBar');
 
+// start a quote route 
+Route::get('/quote-request', 'Front\FrontendController@quoteRequest')->name('front.quote.request');
+
 
 Route::group(['middleware' => 'adminlocalize'], function () {
 
