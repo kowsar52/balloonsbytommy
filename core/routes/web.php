@@ -461,3 +461,4 @@ Route::group(['middleware' => 'maintainance'], function () {
 });
 
 Route::get('/website/maintainance', 'Front\FrontendController@maintainance')->name('front.maintainance');
+

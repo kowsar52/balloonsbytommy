@@ -31,7 +31,7 @@
                     <div class="ltn__breadcrumb-list">
                         <ul>
                             <li><a href="{{route('front.index')}}">{{__('Home')}}</a></li>
-                            <li>{{__('Shop')}}</li>
+                            <li>{{__('Products')}}</li>
                         </ul>                        
         </div>
                 </div>
