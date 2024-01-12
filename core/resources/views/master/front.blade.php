@@ -121,9 +121,9 @@
                                             <span class="input-group-btn">
                                                 <button type="submit"><i class="icon-search"></i></button>
                                             </span>
-                                            <input class="form-control rounded-pill" type="text"
+                                            <input class="form-control rounded-pill __product__search" type="text"
                                                 data-target="{{ route('front.search.suggest') }}"
-                                                id="__product__search" name="search"
+                                                name="search"
                                                 placeholder="{{ __('Search by product name') }}">
                                             <div class="serch-result d-none">
                                                 {{-- search result --}}
@@ -262,11 +262,39 @@
                 <button class="ltn__utilize-close">x</button>
             </div>
             <div class="ltn__utilize-menu-search-form">
-                <form action="#">
-                    <input type="text" placeholder="Search...">
+                <form action="{{ route('front.catalog') }}" method="get">
+                    <input type="hidden" name="category" value="" id="search__category">
+                    <input type="text" autocomplete="off" data-target="{{ route('front.search.suggest') }}" class="__product__search" name="search" placeholder="{{ __('Search by product name') }}">
+                    {{-- <input type="text" data-target="{{ route('front.search.suggest') }}" id="__product__search" name="search" placeholder="{{ __('Search by product name') }}"> --}}
                     <button><i class="fa fa-search"></i></button>
+                    <div class="serch-result d-none">
+                                {{-- {{-- search result --}}
+                    </div>
                 </form>
+                {{-- <span class="d-block d-lg-none close-m-serch"><i class="icon-x"></i></span> --}}
             </div>
+            <!-- Search / Categories-->
+            {{-- <div class="search-box-wrap d-none d-lg-block d-flex">
+                <div class="search-box-inner align-self-center">
+                    <div class="search-box ">
+                        <form class="input-group" id="header_search_form"
+                            action="{{ route('front.catalog') }}" method="get">
+                            <input type="hidden" name="category" value="" id="search__category">
+                            <span class="input-group-btn">
+                                <button type="submit"><i class="icon-search"></i></button>
+                            </span>
+                            <input class="form-control rounded-pill" type="text"
+                                data-target="{{ route('front.search.suggest') }}"
+                                id="__product__search" name="search"
+                                placeholder="{{ __('Search by product name') }}">
+                            <div class="serch-result d-none">
+                               
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <span class="d-block d-lg-none close-m-serch"><i class="icon-x"></i></span>
+            </div> --}}
             <div class="ltn__utilize-menu">
                 <ul>
                             <li>
@@ -763,7 +791,7 @@
                         <div class="row">
 
 
-                            <div class="footer-copyright-left d-flex align-items-baseline">
+                            <div class="footer-copyright-left d-flex align-items-baseline justify-content-between">
 
                                 <div class="ltn__copyright-design clearfix" style="float: left;">
                                     <p>© 2000-<span class="current-year">2024</span> Balloons by Tommy</p>

@@ -163,9 +163,7 @@
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true"><?php echo e(__('Descriptions')); ?></a>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="specification-tab" data-bs-toggle="tab" data-bs-target="#specification" type="button" role="tab" aria-controls="specification" aria-selected="false"><?php echo e(__('Specifications')); ?></a>
-                </li>
+                
             </ul>
             <div class="tab-content card">
                 <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab"">

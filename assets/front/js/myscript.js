@@ -741,7 +741,7 @@ $(function ($) {
             $("#search_form #page").val('');
         }
 
-        $(document).on('keyup', '#__product__search', function () {
+        $(document).on('keyup', '.__product__search', function () {
             let search = $(this).val();
             let category = '';
             category = $('#search__category').val();

@@ -22239,8 +22239,10 @@ screen and (-ms-high-contrast:none) {
 .ltn__breadcrumb-area {
     background-color: var(--white-13);
     margin-bottom: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px; }
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+}
   
   .ltn__breadcrumb-list ul {
     margin: 0;
