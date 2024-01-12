@@ -1667,54 +1667,54 @@ $(window).on('load', function (event) {
               18. Blog Slider One
           --------------------------------------------------------- */
           $('.ltn__blog-slider-one-active').slick({
-              arrows: true,
-              dots: false,
-              infinite: true,
-              speed: 300,
-              slidesToShow: 3,
-              slidesToScroll: 1,
-              prevArrow: '<a class="slick-prev"><i class="icon-arrow-left" alt="Arrow Icon"></i></a>',
-              nextArrow: '<a class="slick-next"><i class="icon-arrow-right" alt="Arrow Icon"></i></a>',
-              responsive: [
-                  {
-                      breakpoint: 1200,
-                      settings: {
-                          slidesToShow: 2,
-                          slidesToScroll: 1,
-                          arrows: false,
-                          dots: true
-                      }
-                  },
-                  {
-                      breakpoint: 992,
-                      settings: {
-                          slidesToShow: 2,
-                          slidesToScroll: 1,
-                          arrows: false,
-                          dots: true
-                      }
-                  },
-                  {
-                      breakpoint: 768,
-                      settings: {
-                          slidesToShow: 1,
-                          slidesToScroll: 1,
-                          arrows: false,
-                          dots: true
-                      }
-                  },
-                  {
-                      breakpoint: 580,
-                      settings: {
-                          arrows: false,
-                          dots: true,
-                          slidesToShow: 1,
-                          slidesToScroll: 1
-                      }
-                  }
-              ]
-          });
-  
+            arrows: true,
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            prevArrow: '<a class="slick-prev"><i class="icon-arrow-left" alt="Arrow Icon"></i></a>',
+            nextArrow: '<a class="slick-next"><i class="icon-arrow-right" alt="Arrow Icon"></i></a>',
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 580,
+                    settings: {
+                        arrows: false,
+                        dots: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
           /* --------------------------------------------------------
               19. Testimonial Slider - 1
           --------------------------------------------------------- */
@@ -2494,3 +2494,57 @@ $(window).on('load', function (event) {
   
     
   })(jQuery);
+
+
+
+/* --------------------------------------------------------
+            18. Blog Slider One
+        --------------------------------------------------------- */
+        $('.ltn__blog-slider-one-active').slick({
+            arrows: true,
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            prevArrow: '<a class="slick-prev"><i class="icon-arrow-left" alt="Arrow Icon"></i></a>',
+            nextArrow: '<a class="slick-next"><i class="icon-arrow-right" alt="Arrow Icon"></i></a>',
+            responsive: [
+                {
+                    breakpoint: 1200,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        arrows: false,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 580,
+                    settings: {
+                        arrows: false,
+                        dots: true,
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });

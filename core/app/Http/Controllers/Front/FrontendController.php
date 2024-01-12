@@ -277,13 +277,6 @@ class FrontendController extends Controller
             ]);
 	}
 
-     //quote
-     public function quoteRequest()
-     {
-         dd('here');
-         return view('front.quote.quote_request');
-     }
- 
 
 
     public function review_submit(){
@@ -537,12 +530,18 @@ public function page($slug)
         return redirect(route('front.index'));
     }
 
-    public function embededSearchBar()
+
+    //quote
+    public function quoteRequest()
     {
-       return view('front.embeded_search_bar');
+        return view('front.quote.quote_request');
     }
 
+    //quoteRequestSend
+    public function quoteRequestSend(Request $request)
+    {
+        return view('front.quote.quote_request_send');
+    }
 
-   
 
 }

@@ -8,6 +8,7 @@ Route::get('/embeded-search-bar', 'Front\FrontendController@embededSearchBar')->
 
 // start a quote route 
 Route::get('/quote-request', 'Front\FrontendController@quoteRequest')->name('front.quote.request');
+Route::get('/quote-request-send', 'Front\FrontendController@quoteRequestSend')->name('front.quote.request.send');
 
 
 Route::group(['middleware' => 'adminlocalize'], function () {
