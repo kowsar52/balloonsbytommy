@@ -10,22 +10,24 @@
 
 
 <?php $__env->startSection('content'); ?>
-<div class="page-title">
-    <div class="container">
+
+<div class="ltn__breadcrumb-area ltn__breadcrumb-area-4 ltn__breadcrumb-color-white---">
+  <div class="container">
       <div class="row">
           <div class="col-lg-12">
-            <ul class="breadcrumbs">
-                <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('Home')); ?></a>
-                </li>
-                <li class="separator"></li>
-                <li><a href="<?php echo e(route('front.catalog')); ?>"><?php echo e(__('Shop')); ?></a>
-                </li>
-                <li class="separator"></li>
-                <li><?php echo e($item->name); ?></li>
-              </ul>
+              <div class="ltn__breadcrumb-inner text-center">
+                  <h1 class="ltn__page-title"><?php echo e($item->name); ?></h1>
+                  <div class="ltn__breadcrumb-list">
+                      <ul>
+                          <li><a href="<?php echo e(route('front.index')); ?>"><?php echo e(__('Home')); ?></a></li>
+                          <li><?php echo e(__('Product')); ?></li>
+                          <li><?php echo e($item->name); ?></li>
+                      </ul>                        
+      </div>
+              </div>
           </div>
       </div>
-    </div>
+  </div>
 </div>
   <!-- Page Content-->
 <div class="container padding-bottom-1x mb-1">
@@ -104,17 +106,7 @@
                     <input type="hidden" value="<?php echo e(PriceHelper::setCurrencyValue()); ?>" id="set_currency_val">
                     <input type="hidden" value="<?php echo e($setting->currency_direction); ?>" id="currency_direction">
                     <h4 class="mb-2 p-title-main"><?php echo e($item->name); ?></h4>
-                    <div class="mb-3">
-                        <div class="rating-stars d-inline-block gmr-3">
-                        <?php echo renderStarRating($item->reviews->avg('rating')); ?>
-
-                        </div>
-                        <?php if($item->is_stock()): ?>
-                            <span class="text-success  d-inline-block"><?php echo e(__('In Stock')); ?></span>
-                        <?php else: ?>
-                            <span class="text-danger  d-inline-block"><?php echo e(__('Out of stock')); ?></span>
-                        <?php endif; ?>
-                    </div>
+                    
 
 
                     <?php if($item->is_type == 'flash_deal'): ?>
@@ -151,100 +143,15 @@
                     </div>
                     <div class="row align-items-end pb-4">
                         <div class="col-sm-12">
-                            <?php if($item->item_type == 'normal'): ?>
-                            <div class="qtySelector product-quantity">
-                              <span class="decreaseQty subclick"><i class="fas fa-minus "></i></span>
-                              <input type="text" class="qtyValue cart-amount" value="1">
-                              <span class="increaseQty addclick"><i class="fas fa-plus"></i></span>
-                                <input type="hidden" value="3333" id="current_stock">
-                            </div>
-                            <?php endif; ?>
-                            <div class="p-action-button">
-                              <?php if($item->item_type != 'affiliate'): ?>
-                                <?php if($item->is_stock()): ?>
-                                <button class="btn btn-primary m-0 a-t-c-mr" id="add_to_cart"><i class="icon-bag"></i><span><?php echo e(__('Add to Cart')); ?></span></button>
-                                <button class="btn btn-primary m-0" id="but_to_cart"><i class="icon-bag"></i><span><?php echo e(__('Buy Now')); ?></span></button>
-                                <?php else: ?>
-                                    <button class="btn btn-primary m-0"><i class="icon-bag"></i><span><?php echo e(__('Out of stock')); ?></span></button>
-                                <?php endif; ?>
-                              <?php else: ?>
-                              <a href="<?php echo e($item->affiliate_link); ?>" target="_blank" class="btn btn-primary m-0"><span><i class="icon-bag"></i><?php echo e(__('Buy Now')); ?></span></a>
-                              <?php endif; ?>
+                          <a href="<?php echo e(route('front.quote.request')); ?>" target="_blank" class="btn btn-primary m-0"><span><i class="icon-bag"></i><?php echo e(__('Start a quote!')); ?></span></a>
 
-                            </div>
+                            
+                            
 
                         </div>
                     </div>
 
-                    <div class="div">
-                        <div class="t-c-b-area">
-                            <?php if($item->brand_id): ?>
-                            <div class="pt-1 mb-1"><span class="text-medium"><?php echo e(__('Brand')); ?>:</span>
-                                    <a href="<?php echo e(route('front.catalog').'?brand='.$item->brand->slug); ?>"><?php echo e($item->brand->name); ?></a>
-                                </div>
-                            <?php endif; ?>
-
-                                <div class="pt-1 mb-1"><span class="text-medium"><?php echo e(__('Categories')); ?>:</span>
-                                    <a href="<?php echo e(route('front.catalog').'?category='.$item->category->slug); ?>"><?php echo e($item->category->name); ?></a>
-                                        <?php if($item->subcategory->name): ?>
-                                        /
-                                        <?php endif; ?>
-                                    <a href="<?php echo e(route('front.catalog').'?subcategory='.$item->subcategory->slug); ?>"><?php echo e($item->subcategory->name); ?></a>
-                                        <?php if($item->childcategory->name): ?>
-                                        /
-                                        <?php endif; ?>
-                                    <a href="<?php echo e(route('front.catalog').'?childcategory='.$item->childcategory->slug); ?>"><?php echo e($item->childcategory->name); ?></a>
-                                </div>
-                                <div class="pt-1 mb-1"><span class="text-medium"><?php echo e(__('Tags')); ?>:</span>
-                                    <?php if($item->tags): ?>
-                                    <?php $__currentLoopData = explode(',',$item->tags); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tag): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                    <?php if($loop->last): ?>
-                                    <a href="<?php echo e(route('front.catalog').'?tag='.$tag); ?>"><?php echo e($tag); ?></a>
-                                    <?php else: ?>
-                                    <a href="<?php echo e(route('front.catalog').'?tag='.$tag); ?>"><?php echo e($tag); ?></a>,
-                                    <?php endif; ?>
-                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                    <?php endif; ?>
-                                </div>
-                                <?php if($item->item_type == 'normal'): ?>
-                                <div class="pt-1 mb-4"><span class="text-medium"><?php echo e(__('SKU')); ?>:</span> #<?php echo e($item->sku); ?></div>
-                                <?php endif; ?>
-                        </div>
-
-                        <div class="mt-4 p-d-f-area">
-                            <div class="left">
-                                <a class="btn btn-primary btn-sm wishlist_store wishlist_text" href="<?php echo e(route('user.wishlist.store',$item->id)); ?>"><span><i class="icon-heart"></i></span>
-                                <?php if(Auth::check() && App\Models\Wishlist::where('user_id',Auth::user()->id)->where('item_id',$item->id)->exists()): ?>
-                                <span><?php echo e(__('Added To Wishlist')); ?></span>
-                                <?php else: ?>
-                                <span class="wishlist1"><?php echo e(__('Wishlist')); ?></span>
-                                <span class="wishlist2 d-none"><?php echo e(__('Added To Wishlist')); ?></span>
-                                <?php endif; ?>
-                                </a>
-                                <button class="btn btn-primary btn-sm  product_compare" data-target="<?php echo e(route('fornt.compare.product',$item->id)); ?>" ><span><i class="icon-repeat"></i><?php echo e(__('Compare')); ?></span></button>
-                            </div>
-
-                            <div class="d-flex align-items-center">
-                                <span class="text-muted mr-1"><?php echo e(__('Share')); ?>: </span>
-                                <div class="d-inline-block a2a_kit">
-                                    <a class="facebook  a2a_button_facebook" href="">
-                                        <span><i class="fab fa-facebook-f"></i></span>
-                                    </a>
-                                    <a class="twitter  a2a_button_twitter" href="">
-                                        <span><i class="fab fa-twitter"></i></span>
-                                    </a>
-                                    <a class="linkedin  a2a_button_linkedin" href="">
-                                        <span><i class="fab fa-linkedin-in"></i></span>
-                                    </a>
-                                    <a class="pinterest   a2a_button_pinterest" href="">
-                                        <span><i class="fab fa-pinterest"></i></span>
-                                    </a>
-                                </div>
-                                <script async src="https://static.addtoany.com/menu/page.js"></script>
-                            </div>
-
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -297,99 +204,7 @@
 
 
   <!-- Reviews-->
-  <div class="container  review-area">
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="section-title">
-                <h2 class="h3"><?php echo e(__('Latest Reviews')); ?></h2>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8">
-              <?php $__empty_1 = true; $__currentLoopData = $reviews; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $review): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-              <div class="single-review">
-                  <div class="comment">
-                    <div class="comment-author-ava"><img class="lazy" data-src="<?php echo e(asset('assets/images/'.$review->user->photo)); ?>" alt="Comment author"></div>
-                    <div class="comment-body">
-                      <div class="comment-header d-flex flex-wrap justify-content-between">
-                        <div>
-                            <h4 class="comment-title mb-1"><?php echo e($review->subject); ?></h4>
-                            <span><?php echo e($review->user->first_name); ?></span>
-                            <span class="ml-3"><?php echo e($review->created_at->format('M d, Y')); ?></span>
-                        </div>
-                        <div class="mb-2">
-                          <div class="rating-stars">
-                            <?php
-                                for($i=0; $i<$review->rating;$i++){
-                                 echo "<i class = 'far fa-star filled'></i>";
-                                }
-                            ?>
-                          </div>
-                        </div>
-                      </div>
-                      <p class="comment-text  mt-2"><?php echo e($review->review); ?></p>
-
-                    </div>
-                  </div>
-              </div>
-              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-              <div class="card p-5">
-                <?php echo e(__('No Review')); ?>
-
-              </div>
-              <?php endif; ?>
-              <div class="row mt-15">
-                <div class="col-lg-12 text-center">
-                    <?php echo e($reviews->links()); ?>
-
-                </div>
-            </div>
-
-          </div>
-          <div class="col-md-4 mb-4">
-            <div class="card">
-              <div class="card-body">
-                <div class="text-center">
-                  <div class="d-inline align-baseline display-3 mr-1"><?php echo e(round($item->reviews->avg('rating'),2)); ?></div>
-                  <div class="d-inline align-baseline text-sm text-warning mr-1">
-                    <div class="rating-stars"><?php echo renderStarRating($item->reviews->avg('rating')); ?></div>
-                  </div>
-                </div>
-                <div class="pt-3">
-                  <label class="text-medium text-sm">5 <?php echo e(__('stars')); ?> <span class="text-muted">- <?php echo e($item->reviews->where('status',1)->where('rating',5)->count()); ?></span></label>
-                  <div class="progress margin-bottom-1x">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo e($item->reviews->where('status',1)->where('rating',5)->sum('rating') * 20); ?>%; height: 2px;" aria-valuenow="100" aria-valuemin="<?php echo e($item->reviews->where('rating',5)->sum('rating') * 20); ?>" aria-valuemax="100"></div>
-                  </div>
-                  <label class="text-medium text-sm">4 <?php echo e(__('stars')); ?> <span class="text-muted">- <?php echo e($item->reviews->where('status',1)->where('rating',4)->count()); ?></span></label>
-                  <div class="progress margin-bottom-1x">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo e($item->reviews->where('status',1)->where('rating',4)->sum('rating') * 20); ?>%; height: 2px;" aria-valuenow="<?php echo e($item->reviews->where('rating',4)->sum('rating') * 20); ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <label class="text-medium text-sm">3 <?php echo e(__('stars')); ?> <span class="text-muted">- <?php echo e($item->reviews->where('status',1)->where('rating',3)->count()); ?></span></label>
-                  <div class="progress margin-bottom-1x">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo e($item->reviews->where('rating',3)->sum('rating') * 20); ?>%; height: 2px;" aria-valuenow="<?php echo e($item->reviews->where('rating',3)->sum('rating') * 20); ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <label class="text-medium text-sm">2 <?php echo e(__('stars')); ?> <span class="text-muted">- <?php echo e($item->reviews->where('status',1)->where('rating',2)->count()); ?></span></label>
-                  <div class="progress margin-bottom-1x">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo e($item->reviews->where('status',1)->where('rating',2)->sum('rating') * 20); ?>%; height: 2px;" aria-valuenow="<?php echo e($item->reviews->where('rating',2)->sum('rating') * 20); ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <label class="text-medium text-sm">1 <?php echo e(__('star')); ?> <span class="text-muted">- <?php echo e($item->reviews->where('status',1)->where('rating',1)->count()); ?></span></label>
-                  <div class="progress mb-2">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: <?php echo e($item->reviews->where('status',1)->where('rating',1)->sum('rating') * 20); ?>; height: 2px;" aria-valuenow="0" aria-valuemin="<?php echo e($item->reviews->where('rating',1)->sum('rating') * 20); ?>" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <?php if(Auth::user()): ?>
-                    <div class="pb-2"><a class="btn btn-primary btn-block" href="#" data-bs-toggle="modal" data-bs-target="#leaveReview"><span><?php echo e(__('Leave a Review')); ?></span></a></div>
-                    <?php else: ?>
-                    <div class="pb-2"><a class="btn btn-primary btn-block" href="<?php echo e(route('user.login')); ?>" ><span><?php echo e(__('Login')); ?></span></a></div>
-                <?php endif; ?>
-              </div>
-            </div>
-          </div>
-
-
-    </div>
-  </div>
+  
 
   <?php if(count($related_items)>0): ?>
   <div class="relatedproduct-section container padding-bottom-3x mb-1 s-pt-30">
