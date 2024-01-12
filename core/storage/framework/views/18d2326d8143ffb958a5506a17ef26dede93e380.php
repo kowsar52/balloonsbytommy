@@ -47,6 +47,21 @@
         <?php echo e($setting->custom_css); ?>
 
     </style>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+          width: 15px;
+        }
+        
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+          background: #2ea349;
+          
+        }
+        
+        
+        </style>
     
     <?php if($setting->is_google_adsense == '1'): ?>
         <?php echo $setting->google_adsense; ?>
