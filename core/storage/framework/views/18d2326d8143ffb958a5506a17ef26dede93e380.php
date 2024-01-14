@@ -36,7 +36,7 @@
     <link
         href="<?php echo e(asset('assets/front/css/color.php?primary_color=') . str_replace('#', '', $setting->primary_color)); ?>"
         rel="stylesheet">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css" integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Modernizr-->
     <script src="<?php echo e(asset('assets/front/js/modernizr.min.js')); ?>"></script>
 
@@ -125,9 +125,9 @@
                                             <span class="input-group-btn">
                                                 <button type="submit"><i class="icon-search"></i></button>
                                             </span>
-                                            <input class="form-control rounded-pill" type="text"
+                                            <input class="form-control rounded-pill __product__search" type="text"
                                                 data-target="<?php echo e(route('front.search.suggest')); ?>"
-                                                id="__product__search" name="search"
+                                                name="search"
                                                 placeholder="<?php echo e(__('Search by product name')); ?>">
                                             <div class="serch-result d-none">
                                                 
@@ -181,11 +181,19 @@
                 <button class="ltn__utilize-close">x</button>
             </div>
             <div class="ltn__utilize-menu-search-form">
-                <form action="#">
-                    <input type="text" placeholder="Search...">
+                <form action="<?php echo e(route('front.catalog')); ?>" method="get">
+                    <input type="hidden" name="category" value="" id="search__category">
+                    <input type="text" autocomplete="off" data-target="<?php echo e(route('front.search.suggest')); ?>" class="__product__search" name="search" placeholder="<?php echo e(__('Search by product name')); ?>">
+                    
                     <button><i class="fa fa-search"></i></button>
+                    <div class="serch-result d-none">
+                                
+                    </div>
                 </form>
+                
             </div>
+            <!-- Search / Categories-->
+            
             <div class="ltn__utilize-menu">
                 <ul>
                             <li>
@@ -490,7 +498,7 @@
                         <div class="row">
 
 
-                            <div class="footer-copyright-left d-flex align-items-baseline">
+                            <div class="footer-copyright-left d-flex align-items-baseline justify-content-between">
 
                                 <div class="ltn__copyright-design clearfix" style="float: left;">
                                     <p>© 2000-<span class="current-year">2024</span> Balloons by Tommy</p>
@@ -563,6 +571,7 @@
 
     <!-- JavaScript (jQuery) libraries, plugins and custom scripts-->
     <script type="text/javascript" src="<?php echo e(asset('assets/front/js/plugins.min.js')); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="<?php echo e(asset('assets/back/js/plugin/bootstrap-notify/bootstrap-notify.min.js')); ?>">
     </script>
     <script type="text/javascript" src="<?php echo e(asset('assets/front/js/scripts.min.js')); ?>"></script>
